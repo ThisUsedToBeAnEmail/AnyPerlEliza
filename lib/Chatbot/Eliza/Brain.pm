@@ -91,7 +91,7 @@ sub transform {
     foreach my $string_part (@string_parts) {
 
         # Run through the whole list of keywords.  
-        KEYWORD: foreach my $keyword (keys $options->data->decomp->%*) {
+        KEYWORD: foreach my $keyword (keys %{$options->data->decomp}) {
 
             # Check to see if the input string contains a keyword
             # which outranks any we have found previously
