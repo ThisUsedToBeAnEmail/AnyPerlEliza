@@ -112,7 +112,8 @@ subtest 'attributes exist' => sub {
 
 done_testing();
 
-sub test_da_attributes($args) {
+sub test_da_attributes {
+    my $args = shift;
 	my $fields = Eliza::Chatbot::Option->new();
 	my $att = $args->{att};
 	
