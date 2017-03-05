@@ -3,13 +3,13 @@ package Eliza::Chatbot;
 use strict;
 use warnings;
 
+use Moo;
 use Eliza::Chatbot::Option;
 use Eliza::Chatbot::Brain;
 
-use Moo;
+our $VERSION = '0.01';
 
 our @user_options = qw(name script_file debug prompts_on memory_on);
-
 foreach my $field (@user_options) {
     has $field => (
         is => 'rw',
@@ -52,7 +52,6 @@ sub command_interface {
     print $options->welcome_message . "\n";
 
     while (1) {
-
         print $options->userprompt if $options->prompts_on;
     
         $previous_user_input = $user_input;
@@ -141,33 +140,6 @@ Eliza is a mock Rogerian psychotherapist.  It prompts for user input, and uses a
 transformation algorithm to change user input into a follow-up question.  The program 
 is designed to give the appearance of understanding.
 
-This program is a faithful implementation of the program described by Weizenbaum.  
-It uses a simplified script language (devised by Charles Hayden). The content of the 
-script is the same as Weizenbaum's. This module encapsulates the Eliza algorithm 
-in the form of an object.  This should make the functionality easy to incorporate in 
-larger programs.
-
-=over
-
-=back
-
-=head1 INSTALLATION
-
-The current version of Eliza::Chatbot.pm is available on CPAN:
-  
-    http://www.perl.com/CPAN/modules/by-module/Chatbot/
-
-To install this package, just change to the directory which you created by untarring 
-the package, and type the following:
-   
-    perl Makefile.PL
-    make test
-    make
-    make install
-
-This will copy Eliza.pm to your perl library directory for use by all perl scripts.  
-You probably must be root to do this, unless you have installed a personal copy of perl.  
-
 =over
 
 =back
@@ -237,16 +209,29 @@ Return a single instance of the Eliza Object
 
 =head1 AUTHOR
 
-=over
-
-=item v2
-
-LNation thisusedtobeanemail@gmail.com June 2016
-
-=item V1
-
-John Nolan  jpnolan@sonic.net  January 2003. 
-Implements the classic Eliza algorithm by Prof. Joseph Weizenbaum. 
-Script format devised by Charles Hayden. 
+LNATION thisusedtobeanemail@gmail.com
 
 =back
+
+=head1 ACKNOWLEDGEMENTS
+
+I started here L<Chatbot::Eliza> and then got a little carried away.
+
+=head1 LICENSE AND COPYRIGHT
+
+Copyright 2017 Robert Acock.
+
+This program is free software; you can redistribute it and/or modify it under the terms of the the Artistic License (2.0). You may obtain a copy of the full license at:
+
+http://www.perlfoundation.org/artistic_license_2_0
+
+Any use, modification, and distribution of the Standard or Modified Versions is governed by this Artistic License. By using, modifying or distributing the Package, you accept this license. Do not use, modify, or distribute the Package, if you do not accept this license.
+
+If your Modified Version has been derived from a Modified Version made by someone other than you, you are nevertheless required to ensure that your Modified Version complies with the requirements of this license.
+
+This license does not grant you the right to use any trademark, service mark, tradename, or logo of the Copyright Holder.
+
+This license includes the non-exclusive, worldwide, free-of-charge patent license to make, have made, use, offer to sell, sell, import and otherwise transfer the Package with respect to any patent claims licensable by the Copyright Holder that are necessarily infringed by the Package. If you institute patent litigation (including a cross-claim or counterclaim) against any party alleging that the Package constitutes direct or contributory patent infringement, then this Artistic License to you shall terminate on the date that such litigation is filed.
+
+Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONTRIBUTORS "AS IS' AND WITHOUT ANY EXPRESS OR IMPLIED WARRANTIES. THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT ARE DISCLAIMED TO THE EXTENT PERMITTED BY YOUR LOCAL LAW. UNLESS REQUIRED BY LAW, NO COPYRIGHT HOLDER OR CONTRIBUTOR WILL BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING IN ANY WAY OUT OF THE USE OF THE PACKAGE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+

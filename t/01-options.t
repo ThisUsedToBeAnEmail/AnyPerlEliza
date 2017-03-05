@@ -5,10 +5,6 @@ use warnings;
 use Test::More;
 use feature 'say';
 
-use experimental qw[
-	signatures
-];
-
 BEGIN {
 	use_ok( 'Eliza::Chatbot::Option' ) || print "Bail out!\n";
 }
