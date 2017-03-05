@@ -1,7 +1,7 @@
-package Chatbot::Eliza::Option;
+package Eliza::Chatbot::Option;
 
 use Moo;
-use Chatbot::Eliza::ScriptParser;
+use Eliza::Chatbot::ScriptParser;
 
 my %fields = (
     name => 'Eliza',
@@ -34,7 +34,7 @@ has 'data' => (
 
 sub build_data {
     my $self = shift;
-    my $parser = Chatbot::Eliza::ScriptParser->new(script_file => $self->script_file);
+    my $parser = Eliza::Chatbot::ScriptParser->new(script_file => $self->script_file);
     $parser->parse_script_data;
     return $parser;
 }
@@ -57,7 +57,7 @@ __END__
 
 =head1 NAME
 
-Chatbot::Eliza::Options 
+Eliza::Chatbot::Options 
 
 =head1 VERSION
 

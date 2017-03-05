@@ -1,4 +1,4 @@
-package Chatbot::Eliza::Brain;
+package Eliza::Chatbot::Brain;
 
 use Moo;
 use Ref::Util qw(is_scalarref is_blessed_arrayref);
@@ -26,7 +26,6 @@ sub preprocess {
 
     my @converted_words;
     foreach my $word ( @orig_words ) {
-        #TODO: add some kind of spell check against unique words
         $word =~ s{[?!,]|but}{.}g;
         push @converted_words, $word; 
     }
@@ -224,7 +223,7 @@ __END__
 
 =head1 Name
 
-Chatbot::Eliza::Brain
+Eliza::Chatbot::Brain
 
 =head1 VERSION
 

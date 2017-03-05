@@ -2,14 +2,14 @@
 
 use strict;
 use warnings;
-use Chatbot::Eliza;
+use Eliza::Chatbot;
 use Test::More 0.88;
 use feature 'say';
 use Array::Utils qw(array_diff);
 
 BEGIN {
-	use_ok( 'Chatbot::Eliza::Option' ) || print "Bail out!\n";
-    use_ok( 'Chatbot::Eliza::Brain' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::Option' ) || print "Bail out!\n";
+    use_ok( 'Eliza::Chatbot::Brain' ) || print "Bail out!\n";
 }
 # doesn't store memory so it's actually pretty useless
 
@@ -41,12 +41,12 @@ done_testing();
 sub test_preprocess {
 	my $args = shift;
 
-    my $options = Chatbot::Eliza::Option->new();
-    my $eliza = Chatbot::Eliza::Brain->new(options => $options);
+    my $options = Eliza::Chatbot::Option->new();
+    my $eliza = Eliza::Chatbot::Brain->new(options => $options);
 	my @reply = $eliza->preprocess($args->{text});
 	# reply will always have a value
 	ok(@reply);
-    if ( !array_diff(@reply, $args->{expected}->@*) ) {
+    if ( !array_diff(@reply, @{ $args->{expected} }) ) {
         pass("We went through preprocess $args->{expected}");
     } else {
         fail("Our arrays do not match $args->{expected}");

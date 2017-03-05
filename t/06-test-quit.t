@@ -2,13 +2,13 @@
 
 use strict;
 use warnings;
-use Chatbot::Eliza;
+use Eliza::Chatbot;
 use Test::More 0.88;
 use feature 'say';
 
 BEGIN {
-	use_ok( 'Chatbot::Eliza::Option' ) || print "Bail out!\n";
-    use_ok( 'Chatbot::Eliza::Brain' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::Option' ) || print "Bail out!\n";
+    use_ok( 'Eliza::Chatbot::Brain' ) || print "Bail out!\n";
 }
 # doesn't store memory so it's actually pretty useless
 
@@ -38,8 +38,8 @@ done_testing();
 sub test_quit {
 	my $args = shift;
 
-    my $options = Chatbot::Eliza::Option->new();
-    my $eliza = Chatbot::Eliza::Brain->new(options => $options);
+    my $options = Eliza::Chatbot::Option->new();
+    my $eliza = Eliza::Chatbot::Brain->new(options => $options);
 	my $reply = $eliza->_test_quit($args->{text});
 	# reply will always have a value
 	is($reply, 1, "test quit success");

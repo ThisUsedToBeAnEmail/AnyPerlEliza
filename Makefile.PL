@@ -4,10 +4,10 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME             => 'Chatbot::Eliza2',
+    NAME             => 'Eliza::Chatbot',
     AUTHOR           => q{Lnation <thisusedtobeanemail@gmail.com>},
-    VERSION_FROM     => 'lib/Chatbot/Eliza2.pm',
-    ABSTRACT_FROM    => 'lib/Chatbot/Eliza2.pm',
+    VERSION_FROM     => 'lib/Eliza/Chatbot.pm',
+    ABSTRACT_FROM    => 'lib/Eliza/Chatbot.pm',
     LICENSE          => 'artistic_2',
     PL_FILES         => {},
     MIN_PERL_VERSION => 5.24,
@@ -24,5 +24,5 @@ WriteMakefile(
         'Ref::Util'        => 0.0020,
     },
     dist  => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
-    clean => { FILES => 'Chatbot-Eliza2-*' },
+    clean => { FILES => 'Eliza-Chatbot-*' },
 );

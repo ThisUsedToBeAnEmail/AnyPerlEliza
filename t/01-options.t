@@ -10,7 +10,7 @@ use experimental qw[
 ];
 
 BEGIN {
-	use_ok( 'Chatbot::Eliza::Option' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::Option' ) || print "Bail out!\n";
 }
 
 subtest 'attributes exist' => sub {
@@ -117,7 +117,7 @@ subtest 'attributes exist' => sub {
 done_testing();
 
 sub test_da_attributes($args) {
-	my $fields = Chatbot::Eliza::Option->new();
+	my $fields = Eliza::Chatbot::Option->new();
 	my $att = $args->{att};
 	
 	# set the attribute

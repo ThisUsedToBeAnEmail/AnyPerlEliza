@@ -1,14 +1,15 @@
-package Chatbot::Eliza;
+package Eliza::Chatbot;
 
 use strict;
 use warnings;
 
-use Chatbot::Eliza::Option;
-use Chatbot::Eliza::Brain;
+use Eliza::Chatbot::Option;
+use Eliza::Chatbot::Brain;
 
 use Moo;
 
-my @user_options = qw(name script_file debug prompts_on memory_on);
+our @user_options = qw(name script_file debug prompts_on memory_on);
+
 foreach my $field (@user_options) {
     has $field => (
         is => 'rw',
@@ -24,13 +25,13 @@ has 'brain' => (
 
 sub _build_brain {
     my $self = shift;
-    my $options = Chatbot::Eliza::Option->new();
+    my $options = Eliza::Chatbot::Option->new();
     foreach my $field (@user_options) {
         if (my $val = $self->$field) {
             $options->$field($val);
         }
     }
-    return Chatbot::Eliza::Brain->new(options => $options);
+    return Eliza::Chatbot::Brain->new(options => $options);
 }
 
 sub command_interface {
@@ -106,7 +107,7 @@ __END__
 
 =head1 NAME
 
-Chatbot::Eliza - I'm so modern I only work on v5.2x
+Eliza::Chatbot - Eliza chatbot
 
 =over
 
@@ -114,7 +115,7 @@ Chatbot::Eliza - I'm so modern I only work on v5.2x
 
 =head1 VERSION
 
-Version 2.0
+Version 0.01
 
 =over
 
@@ -122,9 +123,9 @@ Version 2.0
 
 =head1 SYNOPSIS
 
-    use Chatbot::Eliza
+    use Eliza::Chatbot
 
-    my $bot = Chatbot::Eliza->new();
+    my $bot = Eliza::Chatbot->new();
     
     $bot->command_interface;
 
@@ -152,7 +153,7 @@ larger programs.
 
 =head1 INSTALLATION
 
-The current version of Chatbot::Eliza.pm is available on CPAN:
+The current version of Eliza::Chatbot.pm is available on CPAN:
   
     http://www.perl.com/CPAN/modules/by-module/Chatbot/
 
@@ -173,7 +174,7 @@ You probably must be root to do this, unless you have installed a personal copy 
 
 =head1 OPTIONS
 
-    my $bot = Chatbot::Eliza->new(name => 'WoW');
+    my $bot = Eliza::Chatbot->new(name => 'WoW');
 
 You can pass the following options into Chatbot
 
@@ -217,7 +218,7 @@ method and print out the contents of the Eliza instance's memory.
 
 This module is written in Moo which means it should be relatively easy
 for you to design your own session format. All you need to do is extend 
-L<Chatbot::Eliza> and maybe L<Chatbot::Eliza::Brain> if you're feeling ambitious.
+L<Eliza::Chatbot> and maybe L<Eliza::Chatbot::Brain> if you're feeling ambitious.
 Then you can write your own while loop and your own methods.
 
 =over

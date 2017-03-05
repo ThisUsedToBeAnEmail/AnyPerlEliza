@@ -1,6 +1,6 @@
 # NAME
 
-Chatbot::Eliza - I'm so modern I only work on v5.2x
+Eliza::Chatbot - I'm so modern I only work on v5.2x
 
 # VERSION
 
@@ -8,9 +8,9 @@ Version 2.0
 
 # SYNOPSIS
 
-    use Chatbot::Eliza
+    use Eliza::Chatbot
 
-    my $bot = Chatbot::Eliza->new();
+    my $bot = Eliza::Chatbot->new();
     
     $bot->command_interface;
 
@@ -30,7 +30,7 @@ larger programs.
 
 # INSTALLATION
 
-The current version of Chatbot::Eliza.pm is available on CPAN:
+The current version of Eliza::Chatbot.pm is available on CPAN:
 
     http://www.perl.com/CPAN/modules/by-module/Chatbot/
 
@@ -47,7 +47,7 @@ You probably must be root to do this, unless you have installed a personal copy 
 
 # OPTIONS
 
-    my $bot = Chatbot::Eliza->new(name => 'WoW');
+    my $bot = Eliza::Chatbot->new(name => 'WoW');
 
 You can pass the following options into Chatbot
 
@@ -87,7 +87,7 @@ method and print out the contents of the Eliza instance's memory.
 
 This module is written in Moo which means it should be relatively easy
 for you to design your own session format. All you need to do is extend 
-[Chatbot::Eliza](https://metacpan.org/pod/Chatbot::Eliza) and maybe [Chatbot::Eliza::Brain](https://metacpan.org/pod/Chatbot::Eliza::Brain) if you're feeling ambitious.
+[Eliza::Chatbot](https://metacpan.org/pod/Eliza::Chatbot) and maybe [Eliza::Chatbot::Brain](https://metacpan.org/pod/Eliza::Chatbot::Brain) if you're feeling ambitious.
 Then you can write your own while loop and your own methods.
 
 ## instance

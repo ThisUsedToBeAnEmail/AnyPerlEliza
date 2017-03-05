@@ -2,13 +2,13 @@
 
 use strict;
 use warnings;
-use Chatbot::Eliza;
+use Eliza::Chatbot;
 use Test::More 0.88;
 use feature 'say';
 
 BEGIN {
-	use_ok( 'Chatbot::Eliza::Option' ) || print "Bail out!\n";
-    use_ok( 'Chatbot::Eliza::Brain' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::Option' ) || print "Bail out!\n";
+    use_ok( 'Eliza::Chatbot::Brain' ) || print "Bail out!\n";
 }
 
 my %FINAL = (
@@ -18,7 +18,7 @@ my %FINAL = (
 	q{Life is tough.  Hang in there!} => 1,
 );
 
-my $eliza = Chatbot::Eliza->new();
+my $eliza = Eliza::Chatbot->new();
 subtest 'test_quit' => sub {
 	test_quit({
 		text => 'bye',

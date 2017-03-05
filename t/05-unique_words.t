@@ -5,12 +5,8 @@ use warnings;
 use Test::More;
 use feature 'say';
 
-use experimental qw[
-	signatures
-];
-
 BEGIN {
-	use_ok( 'Chatbot::Eliza::ScriptParser' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::ScriptParser' ) || print "Bail out!\n";
 }
 
 subtest 'unique_words' => sub {
@@ -30,8 +26,9 @@ subtest 'unique_words' => sub {
 
 done_testing();
 
-sub unique_words ($args) {
-	my $parser = Chatbot::Eliza::ScriptParser->new();
+sub unique_words {
+    my $args = shift;
+	my $parser = Eliza::Chatbot::ScriptParser->new();
 	$parser->_unique_words($args->{words});
-    is(scalar keys $parser->unique_words->%*, $args->{unique_count}, "expected count $args->{unique_count}"); 
+    is(scalar keys %{$parser->unique_words}, $args->{unique_count}, "expected count $args->{unique_count}"); 
 }

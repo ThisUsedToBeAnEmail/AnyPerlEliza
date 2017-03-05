@@ -1,4 +1,4 @@
-package Chatbot::Eliza::ScriptParser;
+package Eliza::Chatbot::ScriptParser;
 
 use Moo;
 
@@ -123,7 +123,7 @@ sub _open_script_file {
 
 =head1 Name
 
-Chatbot::Eliza::ScriptParser
+Eliza::Chatbot::ScriptParser
 
 =over
 

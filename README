@@ -1,4 +1,4 @@
-Chatbot-Eliza2
+Eliza::Chatbot
 
 The README is used to introduce the module and provide instructions on
 how to install the module, any machine dependencies it may have (for
@@ -26,21 +26,21 @@ SUPPORT AND DOCUMENTATION
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Chatbot::Eliza2
+    perldoc Eliza::Chatbot
 
 You can also look for information at:
 
     RT, CPAN's request tracker (report bugs here)
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Chatbot-Eliza2
+        http://rt.cpan.org/NoAuth/Bugs.html?Dist=Eliza-Chatbot
 
     AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Chatbot-Eliza2
+        http://annocpan.org/dist/Eliza-Chatbot
 
     CPAN Ratings
-        http://cpanratings.perl.org/d/Chatbot-Eliza2
+        http://cpanratings.perl.org/d/Eliza-Chatbot
 
     Search CPAN
-        http://search.cpan.org/dist/Chatbot-Eliza2/
+        http://search.cpan.org/dist/Eliza-Chatbot/
 
 
 LICENSE AND COPYRIGHT

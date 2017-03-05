@@ -6,12 +6,8 @@ use Test::More;
 use feature 'say';
 use Ref::Util qw(is_hashref is_arrayref);
 
-use experimental qw[
-	signatures
-];
-
 BEGIN {
-	use_ok( 'Chatbot::Eliza::ScriptParser' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::ScriptParser' ) || print "Bail out!\n";
 }
 
 subtest 'test the base script' => sub {
@@ -30,16 +26,17 @@ subtest 'test the base script' => sub {
 
 done_testing();
 
-sub test_script ($args) {
-	my $parser = Chatbot::Eliza::ScriptParser->new();
+sub test_script {
+    my $args = shift;
+	my $parser = Eliza::Chatbot::ScriptParser->new();
 	my $data = $parser->parse_script_data;
 
-    foreach my $field ( keys $args->%*) {
+    foreach my $field ( keys %{ $args }) {
         if ( is_hashref($parser->$field) ) {
-            is($args->{$field}, scalar (keys $parser->$field->%*), "Correct count for $field");
+            is($args->{$field}, scalar (keys %{ $parser->$field }), "Correct count for $field");
         }
         elsif ( is_arrayref($parser->$field) ) {
-            is($args->{$field}, scalar (keys $parser->$field->@*), "Correct count for $field");
+            is($args->{$field}, scalar (keys @{ $parser->$field }), "Correct count for $field");
         }
         else {
             fail('test the base script');

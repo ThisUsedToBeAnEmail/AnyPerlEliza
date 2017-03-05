@@ -2,13 +2,13 @@
 
 use strict;
 use warnings;
-use Chatbot::Eliza;
+use Eliza::Chatbot;
 use Test::More 0.88;
 use feature 'say';
 
 BEGIN {
-	use_ok( 'Chatbot::Eliza::Option' ) || print "Bail out!\n";
-    use_ok( 'Chatbot::Eliza::Brain' ) || print "Bail out!\n";
+	use_ok( 'Eliza::Chatbot::Option' ) || print "Bail out!\n";
+    use_ok( 'Eliza::Chatbot::Brain' ) || print "Bail out!\n";
 }
 # doesn't store memory so it's actually pretty useless
 
@@ -40,8 +40,8 @@ done_testing();
 sub test_postprocess_scala {
 	my $args = shift;
 
-    my $options = Chatbot::Eliza::Option->new();
-    my $eliza = Chatbot::Eliza::Brain->new(options => $options);
+    my $options = Eliza::Chatbot::Option->new();
+    my $eliza = Eliza::Chatbot::Brain->new(options => $options);
 	ok(my $reply = $eliza->postprocess($args->{text}));
 	# reply will always have a value
 	is($reply, $args->{expected}, "we went through preprocess - $reply");
