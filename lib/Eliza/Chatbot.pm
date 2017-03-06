@@ -7,7 +7,7 @@ use Moo;
 use Eliza::Chatbot::Option;
 use Eliza::Chatbot::Brain;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 our @user_options = qw(name script_file debug prompts_on memory_on);
 foreach my $field (@user_options) {
@@ -108,17 +108,9 @@ __END__
 
 Eliza::Chatbot - Eliza chatbot
 
-=over
-
-=back
-
 =head1 VERSION
 
-Version 0.01
-
-=over
-
-=back
+Version 0.02
 
 =head1 SYNOPSIS
 
@@ -128,10 +120,6 @@ Version 0.01
     
     $bot->command_interface;
 
-=over
-
-=back
-
 =head1 DESCRIPTION
 
 This module implements the classic Eliza algorithm. The original Eliza program was 
@@ -140,15 +128,11 @@ Eliza is a mock Rogerian psychotherapist.  It prompts for user input, and uses a
 transformation algorithm to change user input into a follow-up question.  The program 
 is designed to give the appearance of understanding.
 
-=over
-
-=back
-
 =head1 OPTIONS
 
     my $bot = Eliza::Chatbot->new(name => 'WoW');
 
-You can pass the following options into Chatbot
+You can pass the following options into the Chatbot
 
 =over 
 
@@ -193,25 +177,15 @@ for you to design your own session format. All you need to do is extend
 L<Eliza::Chatbot> and maybe L<Eliza::Chatbot::Brain> if you're feeling ambitious.
 Then you can write your own while loop and your own methods.
 
-=over
-
-=back
-
 =head2 instance
 
     $chatterbot->instace;
 
 Return a single instance of the Eliza Object
 
-=over
-
-=back
-
 =head1 AUTHOR
 
 LNATION thisusedtobeanemail@gmail.com
-
-=back
 
 =head1 ACKNOWLEDGEMENTS
 

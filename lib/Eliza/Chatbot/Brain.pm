@@ -227,7 +227,7 @@ Eliza::Chatbot::Brain
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =head1 SUBROUTINES/METHODS
 
@@ -240,6 +240,8 @@ It invokes preprocess(), does transformations, then invokes postprocess.
 It returns the transformed output string, called C<$reasmb>
 
 The algorithm embedded in the transfrom method has three main parts:
+
+=over
 
 =item 1
 
@@ -263,7 +265,7 @@ the flag is not set then the string is the most recent user input, and we can us
 The memory flag is only set when the transform function is called recursively. The mechanism 
 for setting this parameter is embedded in he transform method itself. If the flag is set inappropriately, it is ignored.
 
-=over
+=back
 
 =head2 preprocess
 
@@ -279,8 +281,6 @@ and before a reassebly statement has been selected.
 
 It uses the array C<%pre>, which is created during the parse of the script.
 
-=over
-
 =head2 postprocess
 
     $string = postprocess($string);
@@ -290,8 +290,6 @@ This is where all the "I"'s and "you"'s are exchanged. postprocess() is
 called from within the transform() function.
 
 It uses the attribute C<%post>, created during the parse of the script.
-
-=over
 
 =head2 _test_quit
     
@@ -311,8 +309,6 @@ _debug_memory is a special function hwihc returns the contents of Eliza's memory
 =head1 AUTHOR
 
 LNATION thisusedtobeanemail@gmail.com
-
-=back
 
 =head1 ACKNOWLEDGEMENTS
 
@@ -339,8 +335,6 @@ Disclaimer of Warranty: THE PACKAGE IS PROVIDED BY THE COPYRIGHT HOLDER AND CONT
 =head1 AUTHOR
 
 LNATION thisusedtobeanemail@gmail.com
-
-=back
 
 =head1 LICENSE AND COPYRIGHT
 
