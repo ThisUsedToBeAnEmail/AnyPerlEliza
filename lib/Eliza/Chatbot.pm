@@ -7,7 +7,7 @@ use Moo;
 use Eliza::Chatbot::Option;
 use Eliza::Chatbot::Brain;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 our @user_options = qw(name script_file debug prompts_on memory_on);
 foreach my $field (@user_options) {
@@ -110,7 +110,7 @@ Eliza::Chatbot - Eliza chatbot
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =head1 SYNOPSIS
 
