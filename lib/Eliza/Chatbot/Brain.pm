@@ -11,7 +11,6 @@ has 'options' => (
 has 'last' => (
     is => 'rw',
     lazy => 1,
-    default => undef
 );
 
 has 'decomp_matches' => (
