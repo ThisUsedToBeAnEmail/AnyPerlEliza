@@ -1,38 +1,20 @@
 package Eliza::Chatbot::Option;
 
 use Moo;
+use MooX::LazierAttributes;
 use Eliza::Chatbot::ScriptParser;
 
-my %fields = (
-    name => 'Eliza',
-    script_file => '',
-    debug => 0,
-    debug_text => '',
-    transform_text => '',
-    prompts_on => 1,
-    memory_on => 1,
-    botprompt => '',
-    userprompt => '',
-    max_memory_size => 5,
-    likelihood_of_using_memory => 1,
-    memory => sub { [ ] },
+attributes (
+    (map { $_ => [ 'rw', '', {lazy => 1}] } qw/script_file debug_text transform_text botprompt userprompt/),
+    (map { $_ => [ 'rw', 1, {lazy => 1}] } qw/prompts_on memory_on likelihood_of_using_memory/),
+    name => ['rw', 'Eliza', {lazy => 1}],
+    debug => ['rw', 0, {lazy => 1}],
+    max_memory_size => ['rw', 5, {lazy => 1}],
+    memory => ['rw', [ ], {lazy => 1}],
+    data => ['ro', undef, {lazy => 1, builder => 1}]
 );
 
-while ( my( $key, $value ) = each %fields ) {
-    has $key => (
-        is => 'rw',
-        lazy => 1,
-        default => $value,
-    );
-}
-
-has 'data' => (
-    is => 'ro',
-    lazy => 1,
-    builder => 'build_data'
-);
-
-sub build_data {
+sub _build_data {
     my $self = shift;
     my $parser = Eliza::Chatbot::ScriptParser->new(script_file => $self->script_file);
     $parser->parse_script_data;
@@ -61,7 +43,7 @@ Eliza::Chatbot::Options
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 Options
 

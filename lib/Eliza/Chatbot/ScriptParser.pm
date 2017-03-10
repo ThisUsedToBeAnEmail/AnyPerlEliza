@@ -1,33 +1,13 @@
 package Eliza::Chatbot::ScriptParser;
 
 use Moo;
+use MooX::LazierAttributes;
 
-has 'script_file' => (
-    is => 'rw',
-    default => q{},
+attributes (
+    script_file => [ 'rw', q{} ],
+    ( map { $_ => ['rw', [ ], { lazy => 1 }] } qw/quit initial final/),
+    ( map { $_ => ['rw', { }, { lazy => 1 }] } qw/decomp reasmb reasmb_for_memory pre post synon key unique_words/),
 );
-
-my %data = (
-    quit => sub { [ ] },
-    initial => sub { [ ] },
-    final => sub { [ ] },
-    decomp => sub { { } },
-    reasmb => sub { { } },
-    reasmb_for_memory => sub { { } },
-    pre => sub { { } },
-    post => sub { { } },
-    synon => sub { { } },
-    key => sub { { } },
-    unique_words => sub { { } },
-);
-
-while ( my( $key, $value ) = each %data ) {
-    has $key => (
-        is => 'rw',
-        lazy => 1,
-        default => $value,
-    );
-}
 
 sub parse_script_data {
     my $self = shift;
@@ -127,7 +107,7 @@ Eliza::Chatbot::ScriptParser
 
 =head1 Version
 
-Version 0.03
+Version 0.04
 
 =head1 Options
 

@@ -1,22 +1,13 @@
 package Eliza::Chatbot::Brain;
 
 use Moo;
+use MooX::LazierAttributes;
+
 use Ref::Util qw(is_scalarref is_blessed_arrayref);
 
-has 'options' => (
-    is => 'rw',
-    lazy => 1,
-);
-
-has 'last' => (
-    is => 'rw',
-    lazy => 1,
-);
-
-has 'decomp_matches' => (
-    is => 'rw',
-    lazy => 1,
-    default => sub { [ ] },
+attributes(
+    decomp_matches => ['rw', [ ], {lazy => 1}],
+    (map { $_ => ['rw', undef, {lazy => 1}] } qw/options last/),
 );
 
 sub preprocess {
@@ -85,6 +76,7 @@ sub transform {
     # First run the string through preprocess.  
     my @string_parts = $self->preprocess( $string );
 
+    $self->decomp_matches([]);
     # Examine each part of the input string in turn.
     foreach my $string_part (@string_parts) {
 
@@ -104,7 +96,7 @@ sub transform {
                 $rank = $options->data->key->{$keyword};
                 $options->debug_text(
                     sprintf("%s \trank:%d keyword:%s",
-                        $options->debug_text, $rank, $keyword)
+                        ($options->debug_text // ''), $rank, $keyword)
                 );
 
                 # Now let's check all the decomposition rules for that keyword. 
@@ -138,7 +130,10 @@ sub transform {
                         # to individual wildcards.  Use '0' as a placeholder
                         # (we don't want to refer to any "zeroth" wildcard).
                         my @decomp_matches = ("0", $1, $2, $3, $4, $5, $6, $7, $8, $9, $10); 
+                      
+
                         push @{$self->decomp_matches}, { matches => \@decomp_matches };
+                        
                         $options->debug_text(
                             sprintf( "%s : %s \n", 
                                 $options->debug_text,  join( ' ', @decomp_matches))
@@ -226,7 +221,7 @@ Eliza::Chatbot::Brain
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SUBROUTINES/METHODS
 

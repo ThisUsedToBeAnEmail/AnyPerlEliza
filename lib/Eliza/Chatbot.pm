@@ -4,23 +4,17 @@ use strict;
 use warnings;
 
 use Moo;
+use MooX::LazierAttributes;
 use Eliza::Chatbot::Option;
 use Eliza::Chatbot::Brain;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 our @user_options = qw(name script_file debug prompts_on memory_on);
-foreach my $field (@user_options) {
-    has $field => (
-        is => 'rw',
-        default => undef,
-    );
-}
 
-has 'brain' => (
-    is => 'rw',
-    lazy => 1,
-    builder => '_build_brain',
+attributes (
+    (map { $_ => [qw/rw/] } @user_options),
+    brain => ['rw', undef, { lazy => 1, builder => 1 }],
 );
 
 sub _build_brain {
@@ -110,7 +104,7 @@ Eliza::Chatbot - Eliza chatbot
 
 =head1 VERSION
 
-Version 0.03
+Version 0.04
 
 =head1 SYNOPSIS
 
