@@ -5,8 +5,8 @@ use MooX::LazierAttributes;
 use Eliza::Chatbot::ScriptParser;
 
 attributes (
-    (map { $_ => [ rw, '', {lzy}] } qw/script_file debug_text transform_text botprompt userprompt/),
-    (map { $_ => [ rw, 1, {lzy}] } qw/prompts_on memory_on likelihood_of_using_memory/),
+    [qw/script_file debug_text transform_text botprompt userprompt/] => [ rw, '', {lzy}],
+    [qw/prompts_on memory_on likelihood_of_using_memory/] => [ rw, 1, {lzy}],
     name => [ rw, 'Eliza', {lzy}],
     debug => [rw, 0, {lzy}],
     max_memory_size => [rw, 5, {lzy}],
@@ -43,7 +43,7 @@ Eliza::Chatbot::Options
 
 =head1 VERSION
 
-Version 0.04
+Version 0.06
 
 =head1 Options
 

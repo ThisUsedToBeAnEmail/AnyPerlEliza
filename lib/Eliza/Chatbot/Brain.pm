@@ -7,7 +7,7 @@ use Ref::Util qw(is_scalarref is_blessed_arrayref);
 
 attributes(
     decomp_matches => [rw, [ ], {lzy}],
-    (map { $_ => [rw, nan, {lzy}] } qw/options last/),
+    [qw/options last/] => [rw, nan, {lzy}],
 );
 
 sub preprocess {
@@ -221,7 +221,7 @@ Eliza::Chatbot::Brain
 
 =head1 VERSION
 
-Version 0.04
+Version 0.06
 
 =head1 SUBROUTINES/METHODS
 

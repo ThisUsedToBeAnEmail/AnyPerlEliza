@@ -4,9 +4,9 @@ use Moo;
 use MooX::LazierAttributes;
 
 attributes (
-    script_file => [ rw, q{} ],
-    ( map { $_ => [ rw, [ ], { lzy }] } qw/quit initial final/),
-    ( map { $_ => [ rw, { }, { lzy }] } qw/decomp reasmb reasmb_for_memory pre post synon key unique_words/),
+    script_file => [rw, q{}],
+    [qw/quit initial final/] => [rw, [], {lzy}],
+    [qw/decomp reasmb reasmb_for_memory pre post synon key unique_words/] => [rw, { }, { lzy }],
 );
 
 sub parse_script_data {
@@ -107,7 +107,7 @@ Eliza::Chatbot::ScriptParser
 
 =head1 Version
 
-Version 0.04
+Version 0.06
 
 =head1 Options
 

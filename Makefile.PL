@@ -21,7 +21,7 @@ WriteMakefile(
     },
     PREREQ_PM => {
         'Moo'              => 1.0010001,
-        'MooX::LazierAttributes' => 0.06,
+        'MooX::LazierAttributes' => 0.07,
         'Ref::Util'        => 0.0020,
     	'strict'		   => 0,
 		'warnings'		   => 0,
