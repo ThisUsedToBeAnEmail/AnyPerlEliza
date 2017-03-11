@@ -5,13 +5,13 @@ use MooX::LazierAttributes;
 use Eliza::Chatbot::ScriptParser;
 
 attributes (
-    (map { $_ => [ 'rw', '', {lazy => 1}] } qw/script_file debug_text transform_text botprompt userprompt/),
-    (map { $_ => [ 'rw', 1, {lazy => 1}] } qw/prompts_on memory_on likelihood_of_using_memory/),
-    name => ['rw', 'Eliza', {lazy => 1}],
-    debug => ['rw', 0, {lazy => 1}],
-    max_memory_size => ['rw', 5, {lazy => 1}],
-    memory => ['rw', [ ], {lazy => 1}],
-    data => ['ro', undef, {lazy => 1, builder => 1}]
+    (map { $_ => [ rw, '', {lzy}] } qw/script_file debug_text transform_text botprompt userprompt/),
+    (map { $_ => [ rw, 1, {lzy}] } qw/prompts_on memory_on likelihood_of_using_memory/),
+    name => [ rw, 'Eliza', {lzy}],
+    debug => [rw, 0, {lzy}],
+    max_memory_size => [rw, 5, {lzy}],
+    memory => [rw, [ ], {lzy}],
+    data => [ro, nan, {lzy, bld}]
 );
 
 sub _build_data {

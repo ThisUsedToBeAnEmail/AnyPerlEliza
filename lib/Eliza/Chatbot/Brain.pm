@@ -6,8 +6,8 @@ use MooX::LazierAttributes;
 use Ref::Util qw(is_scalarref is_blessed_arrayref);
 
 attributes(
-    decomp_matches => ['rw', [ ], {lazy => 1}],
-    (map { $_ => ['rw', undef, {lazy => 1}] } qw/options last/),
+    decomp_matches => [rw, [ ], {lzy}],
+    (map { $_ => [rw, nan, {lzy}] } qw/options last/),
 );
 
 sub preprocess {

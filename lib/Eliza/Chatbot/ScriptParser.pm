@@ -4,9 +4,9 @@ use Moo;
 use MooX::LazierAttributes;
 
 attributes (
-    script_file => [ 'rw', q{} ],
-    ( map { $_ => ['rw', [ ], { lazy => 1 }] } qw/quit initial final/),
-    ( map { $_ => ['rw', { }, { lazy => 1 }] } qw/decomp reasmb reasmb_for_memory pre post synon key unique_words/),
+    script_file => [ rw, q{} ],
+    ( map { $_ => [ rw, [ ], { lzy }] } qw/quit initial final/),
+    ( map { $_ => [ rw, { }, { lzy }] } qw/decomp reasmb reasmb_for_memory pre post synon key unique_words/),
 );
 
 sub parse_script_data {

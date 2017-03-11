@@ -13,8 +13,8 @@ our $VERSION = '0.04';
 our @user_options = qw(name script_file debug prompts_on memory_on);
 
 attributes (
-    (map { $_ => [qw/rw/] } @user_options),
-    brain => ['rw', undef, { lazy => 1, builder => 1 }],
+    (map { $_ => [rw] } @user_options),
+    brain => [rw, nan, { lzy, bld }],
 );
 
 sub _build_brain {
